@@ -3,7 +3,8 @@ const Schema = mongoose.Schema;
 
 const RoomSchema = new Schema({
     PGname: String,
-    price: String,
+    price: Number,
+    image: String,
     maxOccupants: Number,
     description: String,
     location: String,

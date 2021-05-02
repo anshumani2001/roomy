@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const cities = require('./cities');
-const {places, descriptors} = require('./seedHelpers')
+const { places, descriptors } = require('./seedHelpers')
 const Room = require('../models/room');
 
 mongoose.connect('mongodb://localhost:27017/roomy', {
@@ -15,20 +15,24 @@ db.once("open", () => {
     console.log("Database connected");
 });
 
-const sample = array => array[Math.floor(Math.random()*array.length)];
+const sample = array => array[Math.floor(Math.random() * array.length)];
 
-const seedDB = async() =>{
+const seedDB = async () => {
     await Room.deleteMany({})
-    for(let i=0;i<50;i++){
-        const random1467 = Math.floor(Math.random()*1467);
+    for (let i = 0; i < 50; i++) {
+        const random1467 = Math.floor(Math.random() * 1467);
+        const price = Math.floor(Math.random()*10000+5000);
         const room = new Room({
-            location:`${cities[random1467].city}, ${cities[random1467].state}`,
-            PGname: `${sample(descriptors)} ${sample(places)}`
+            location: `${cities[random1467].city}, ${cities[random1467].state}`,
+            PGname: `${sample(descriptors)} ${sample(places)}`,
+            image: 'https://source.unsplash.com/collection/3214295/1280x720',
+            description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam consequatur dolorem ut autem repellendus quos sed soluta impedit possimus, commodi non quas. Placeat consequatur qui dolore debitis. Porro, illum eveniet!',
+            price
         })
         await room.save()
     }
 }
 
-seedDB().then(()=>{
+seedDB().then(() => {
     mongoose.connection.close();
 })

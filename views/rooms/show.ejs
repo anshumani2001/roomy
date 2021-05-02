@@ -1,14 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Show</title>
-</head>
-<body>
+<% layout('layouts/boilerplate') %> 
     <h1><%= room.PGname %> </h1>
     <h2><%= room.location %> </h2>
+    <img src="<%= room.image %> " alt="">
+    <p><%= room.description %> </p>
     <footer>
         <p>
             <a href="/rooms/<%= room._id %>/edit ">Edit</a>
@@ -22,5 +16,3 @@
             </form>
         </p>
     </footer>
-</body>
-</html>

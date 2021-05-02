@@ -1,18 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rooms</title>
-</head>
-<body>
-    <h1>All Rooms</h1>
-    <a href="/rooms/new">Add Room</a>
-    <ul>
-        <% for( let room of rooms ) { %>
-            <li><a href="/rooms/<%= room._id %>"><%= room.PGname %></a> </li>
-        <% } %>
-    </ul>
-</body>
-</html>
+<% layout('layouts/boilerplate') %> 
+<h1>All Rooms</h1>
+<a href="/rooms/new">Add Room</a>
+<ul>
+    <% for( let room of rooms ) { %>
+        <li><a href="/rooms/<%= room._id %>"><%= room.PGname %></a> </li>
+    <% } %>
+</ul>
