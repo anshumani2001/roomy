@@ -1,18 +1,26 @@
 <% layout('layouts/boilerplate') %> 
-    <h1><%= room.PGname %> </h1>
-    <h2><%= room.location %> </h2>
-    <img src="<%= room.image %> " alt="">
-    <p><%= room.description %> </p>
-    <footer>
-        <p>
-            <a href="/rooms/<%= room._id %>/edit ">Edit</a>
-        </p>
-        <p>
-            <a href="/rooms">All Rooms</a>
-        </p>
-        <p>
-            <form action="/rooms/<%= room._id %>?_method=DELETE" method="POST">
-                <button>Delete</button>
+
+<div class="row">
+    <div class="col-6 offset-3">
+        <div class="card mb-3">
+            <img src="<%= room.image %> " class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title"><%= room.PGname %></h5>
+              <p class="card-text"><%= room.description %></p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><%= room.location %></li>
+              <li class="list-group-item"><%= room.price %>/month</li>
+            </ul>
+            <div class="card-body">
+              <a href="/rooms/<%= room._id %>/edit " class="card-link btn btn-info">Edit</a>
+              <form class="d-inline" action="/rooms/<%= room._id %>?_method=DELETE" method="POST">
+                <button class="btn btn-danger">Delete</button>
             </form>
-        </p>
-    </footer>
+            </div>
+            <div class="card-footer text-muted">
+                2 days ago
+              </div>
+          </div>
+    </div>
+</div>

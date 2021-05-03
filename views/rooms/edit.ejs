@@ -1,14 +1,37 @@
 <% layout('layouts/boilerplate') %>
-    <h1>Edit Room</h1>
-    <form action="/rooms/<%= room._id %>?_method=PUT " method="POST">
-        <div>
-            <label for="PGname">PG Name:</label>
-            <input type="text" id="PGname" name="room[PGname]" value="<%= room.PGname %> ">
+    <div class="row">
+        <h1 class="text-center">Edit Room</h1>
+        <div class="col-6 offset-3">
+            <form action="/rooms/<%= room._id %>?_method=PUT " method="POST">
+                <div class="mb-3">
+                    <label class="form-label" for="PGname">PG Name:</label>
+                    <input class="form-control" type="text" id="PGname" name="room[PGname]" value="<%= room.PGname %>">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="location">Location:</label>
+                    <input class="form-control" type="text" id="location" name="room[location]"
+                        value="<%= room.location %> ">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="image">Image URL:</label>
+                    <input class="form-control" type="text" id="image" name="room[image]" value="<%= room.image %> ">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="description">Description:</label>
+                    <textarea class="form-control" type="text" id="description"
+                        name="room[description]"><%= room.description %></textarea>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="price">Price:</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">₹</span>
+                        <input type="text" class="form-control" id="price" aria-label="price" name="room[price]"
+                            value="<%= room.price %> ">
+                        <span class="input-group-text">.00</span>
+                    </div>
+                </div>
+                <button class="btn btn-info mb-3">Update Room</button>
+            </form>
+            <a href="/rooms/<%= room._id %> ">Back to room</a>
         </div>
-        <div>
-            <label for="location">Location:</label>
-            <input type="text" id="location" name="room[location]" value="<%= room.location %> ">
-        </div>
-        <button>Edit Room</button>
-        <a href="/rooms/<%= room._id %> ">Back to room</a>
-    </form>
+    </div>

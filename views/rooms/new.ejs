@@ -1,13 +1,34 @@
 <% layout('layouts/boilerplate') %>
-    <form action="/rooms" method="POST">
-        <div>
-            <label for="PGname">PG Name:</label>
-            <input type="text" id="PGname" name="room[PGname]">
+    <div class="row">
+        <h1 class="text-center">New Room</h1>
+        <div class="col-6 offset-3">
+            <form action="/rooms" method="POST">
+                <div class="mb-3">
+                    <label class="form-label" for="PGname">PG Name:</label>
+                    <input class="form-control" type="text" id="PGname" name="room[PGname]">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="location">Location:</label>
+                    <input class="form-control" type="text" id="location" name="room[location]">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="image">Image URL:</label>
+                    <input class="form-control" type="text" id="image" name="room[image]">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="description">Description:</label>
+                    <textarea class="form-control" type="text" id="description" name="room[description]"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="price">Price:</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">₹</span>
+                        <input type="text" class="form-control" id="price" aria-label="price" name="room[price]">
+                        <span class="input-group-text">.00</span>
+                    </div>
+                </div>
+                <button class="btn btn-success mb-3">Add Room</button>
+            </form>
+            <a href="/rooms">All Rooms</a>
         </div>
-        <div>
-            <label for="location">Location:</label>
-            <input type="text" id="location" name="room[location]">
-        </div>
-        <button>Add Room</button>
-        <a href="/rooms">All Rooms</a>
-    </form>
+    </div>
