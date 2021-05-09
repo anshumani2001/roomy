@@ -2,32 +2,49 @@
     <div class="row">
         <h1 class="text-center">Edit Room</h1>
         <div class="col-6 offset-3">
-            <form action="/rooms/<%= room._id %>?_method=PUT " method="POST">
+            <form action="/rooms/<%= room._id %>?_method=PUT " method="POST" class="validated-form" novalidate>
                 <div class="mb-3">
                     <label class="form-label" for="PGname">PG Name:</label>
-                    <input class="form-control" type="text" id="PGname" name="room[PGname]" value="<%= room.PGname %>">
+                    <input class="form-control" type="text" id="PGname" name="room[PGname]" value="<%= room.PGname %>"
+                        required>
+                    <div class="valid-feedback">
+                        Looks Good!
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="location">Location:</label>
                     <input class="form-control" type="text" id="location" name="room[location]"
-                        value="<%= room.location %> ">
+                        value="<%= room.location %> " required>
+                    <div class="valid-feedback">
+                        Looks Good!
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="image">Image URL:</label>
-                    <input class="form-control" type="text" id="image" name="room[image]" value="<%= room.image %> ">
+                    <input class="form-control" type="text" id="image" name="room[image]" value="<%= room.image %> "
+                        required>
+                    <div class="valid-feedback">
+                        Looks Good!
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="description">Description:</label>
-                    <textarea class="form-control" type="text" id="description"
-                        name="room[description]"><%= room.description %></textarea>
+                    <textarea class="form-control" type="text" id="description" name="room[description]"
+                        required><%= room.description %></textarea>
+                    <div class="valid-feedback">
+                        Looks Good!
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="price">Price:</label>
                     <div class="input-group mb-3">
                         <span class="input-group-text">₹</span>
                         <input type="text" class="form-control" id="price" aria-label="price" name="room[price]"
-                            value="<%= room.price %> ">
+                            value="<%= room.price %> " required>
                         <span class="input-group-text">.00</span>
+                        <div class="valid-feedback">
+                            Looks Good!
+                        </div>
                     </div>
                 </div>
                 <button class="btn btn-info mb-3">Update Room</button>
