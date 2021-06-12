@@ -25,6 +25,7 @@ router.post('/', catchAsync(async (req, res) => {
     room.reviews.push(review);
     await review.save();
     await room.save();
+    req.flash('success', 'Created new review')
     res.redirect(`/rooms/${room._id}`)
 }))
 
@@ -32,7 +33,8 @@ router.delete('/:reviewId', catchAsync(async (req, res) => {
     const { id, reviewId } = req.params;
     await Room.findByIdAndUpdate(id, { $pull: { reviews: reviewId } });
     await Review.findByIdAndDelete(reviewId);
-    res.redirect(`/rooms/${id}`)
+    req.flash('success','Review Deleted!')
+    res.redirect(`/rooms/${id}`);
 }))
 
 module.exports = router;
