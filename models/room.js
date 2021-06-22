@@ -11,6 +11,10 @@ const RoomSchema = new Schema({
     location: String,
     attachedBathroom: Boolean,
     attachedBalcony: Boolean,
+    author: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    },
     reviews: [
         {
             type: Schema.Types.ObjectId,
@@ -19,8 +23,8 @@ const RoomSchema = new Schema({
     ]
 });
 
-RoomSchema.post('findOneAndDelete', async function(doc){
-    if(doc){
+RoomSchema.post('findOneAndDelete', async function (doc) {
+    if (doc) {
         await Review.remove({
             _id: {
                 $in: doc.reviews
@@ -29,4 +33,4 @@ RoomSchema.post('findOneAndDelete', async function(doc){
     }
 })
 
-module.exports = mongoose.model('Room',RoomSchema);
+module.exports = mongoose.model('Room', RoomSchema);
