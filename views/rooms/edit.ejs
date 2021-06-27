@@ -2,7 +2,8 @@
     <div class="row">
         <h1 class="text-center">Edit Room</h1>
         <div class="col-6 offset-3">
-            <form action="/rooms/<%= room._id %>?_method=PUT " method="POST" class="validated-form" novalidate>
+            <form action="/rooms/<%= room._id %>?_method=PUT " method="POST" class="validated-form" novalidate
+                enctype="multipart/form-data">
                 <div class="mb-3">
                     <label class="form-label" for="PGname">PG Name:</label>
                     <input class="form-control" type="text" id="PGname" name="room[PGname]" value="<%= room.PGname %>"
@@ -20,12 +21,8 @@
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label" for="image">Image URL:</label>
-                    <input class="form-control" type="text" id="image" name="room[image]" value="<%= room.image %> "
-                        required>
-                    <div class="valid-feedback">
-                        Looks Good!
-                    </div>
+                    <label for="formFileMultiple" class="form-label">Add image(s)</label>
+                    <input class="form-control" type="file" id="formFileMultiple" name='image' multiple>
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="description">Description:</label>
@@ -46,6 +43,15 @@
                             Looks Good!
                         </div>
                     </div>
+                </div>
+                <div class="mb-3">
+                    <% room.images.forEach(function(img,i) { %>
+                        <img src="<%=img.thumbnail%>" class='img-thumbnail' alt="">
+                        <div class="form-check-inline">
+                            <input type="checkbox" name="deleteImages[]" id="image-<%=i%>" value="<%=img.filename%>">
+                        </div>
+                        <label for="image-<%=i%>">Delete?</label>
+                        <% }) %>  
                 </div>
                 <button class="btn btn-info mb-3">Update Room</button>
             </form>
