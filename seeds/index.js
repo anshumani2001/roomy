@@ -29,9 +29,13 @@ const seedDB = async () => {
             // image: 'https://source.unsplash.com/collection/3214295/1280x720',
             description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam consequatur dolorem ut autem repellendus quos sed soluta impedit possimus, commodi non quas. Placeat consequatur qui dolore debitis. Porro, illum eveniet!',
             price,
+            geometry: {
+                type: 'Point',
+                coordinates: [77.1, 31.96]
+            },
             images: [
                 {
-                    url: 'https://res.cloudinary.com/dus522prm/image/upload/v1624630415/Roomy/vbgowcn5ouobtsoj1nia.jpg',
+                    url: 'https://res.cloudinary.com/dus522prm/image/upload/v1624631502/Roomy/jooj3qvxmzuudlzntqzj.jpg',
                     filename: 'Roomy/vbgowcn5ouobtsoj1nia'
                 },
                 {

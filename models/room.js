@@ -7,19 +7,27 @@ const ImageSchema = new Schema({
     filename: String
 })
 
-ImageSchema.virtual('thumbnail').get(function(){
-    return this.url.replace('/upload','/upload/w_200')
+ImageSchema.virtual('thumbnail').get(function () {
+    return this.url.replace('/upload', '/upload/w_200')
 })
 
 const RoomSchema = new Schema({
     PGname: String,
     price: Number,
     images: [ImageSchema],
-    maxOccupants: Number,
+    geometry: {
+        type: {
+            type: String,
+            enum: ['Point'],
+            required: true
+        },
+        coordinates: {
+            type: [Number],
+            required: true
+        }
+    },
     description: String,
     location: String,
-    attachedBathroom: Boolean,
-    attachedBalcony: Boolean,
     author: {
         type: Schema.Types.ObjectId,
         ref: 'User'
@@ -29,7 +37,10 @@ const RoomSchema = new Schema({
             type: Schema.Types.ObjectId,
             ref: 'Review'
         }
-    ]
+    ],
+    maxOccupants: Number,
+    attachedBathroom: Boolean,
+    attachedBalcony: Boolean
 });
 
 RoomSchema.post('findOneAndDelete', async function (doc) {

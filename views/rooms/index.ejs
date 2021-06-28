@@ -1,23 +1,34 @@
-<% layout('layouts/boilerplate') %> 
-<h1>All Rooms</h1>
-<a href="/rooms/new">Add Room</a>
+<% layout('layouts/boilerplate') %>
+    <h1>All Rooms</h1>
+    <a href="/rooms/new">Add Room</a>
 
-<% for( let room of rooms ) { %>
+    <% for( let room of rooms ) { %>
         <div class="card mb-3">
             <div class="row">
                 <div class="col-md-4">
-                    <img src="<%=room.images[0].url%> " alt="" class="img-fluid">
+                    <% if(room.images.length){ %>
+                        <img src="<%=room.images[0].url%>" alt="" class="img-fluid">
+                        <% }else{ %>
+                            <img src="https://res.cloudinary.com/dus522prm/image/upload/v1624631502/Roomy/jooj3qvxmzuudlzntqzj.jpg"
+                                alt="" class="img-fluid">
+                            <% } %>
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
-                        <h5 class="card-title"><%= room.PGname %> </h5>
-                        <p class="card-text"><%= room.description %> </p>
+                        <h5 class="card-title">
+                            <%= room.PGname %>
+                        </h5>
                         <p class="card-text">
-                            <small class="text-muted"><%= room.location %> </small>
+                            <%= room.description %>
+                        </p>
+                        <p class="card-text">
+                            <small class="text-muted">
+                                <%= room.location %>
+                            </small>
                         </p>
                         <a href="/rooms/<%= room.id %> " class="btn btn-primary">View <%= room.PGname %> </a>
                     </div>
                 </div>
             </div>
         </div>
-<% } %>
+        <% } %>
