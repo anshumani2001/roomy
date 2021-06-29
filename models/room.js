@@ -11,6 +11,8 @@ ImageSchema.virtual('thumbnail').get(function () {
     return this.url.replace('/upload', '/upload/w_200')
 })
 
+const opts = { toJSON: { virtuals: true } };
+
 const RoomSchema = new Schema({
     PGname: String,
     price: Number,
@@ -41,7 +43,13 @@ const RoomSchema = new Schema({
     maxOccupants: Number,
     attachedBathroom: Boolean,
     attachedBalcony: Boolean
-});
+}, opts);
+
+RoomSchema.virtual('properties.popUpMarkup').get(function () {
+    return `
+    <strong><a href="/rooms/${this._id}">${this.PGname}</a></strong>
+    <p>${this.description.substring(0, 20)}...</p>`
+})
 
 RoomSchema.post('findOneAndDelete', async function (doc) {
     if (doc) {
