@@ -3,7 +3,7 @@
 
   <div class="row">
     <div class="col-6">
-      <div id='map'></div>
+      
       <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
           <% room.images.forEach((img,i)=> { %>
@@ -59,6 +59,7 @@
       </div>
     </div>
     <div class="col-6">
+      <div id='map'></div>
       <% if(currentUser) {%>
         <h2>Leave a Review</h2>
         <form action="/rooms/<%= room._id %>/reviews" method="POST" class="mb-3 validated-form" novalidate>

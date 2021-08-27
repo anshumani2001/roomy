@@ -36,7 +36,7 @@ const seedDB = async () => {
         }).send();
 
         const room = new Room({
-            author: '60d096bc99a1332674a1c44f',
+            author: '6128f9f3e7c4680ab0ba1315',
             location: location,
             PGname: `${sample(descriptors)} ${sample(places)}`,
             // image: 'https://source.unsplash.com/collection/3214295/1280x720',
@@ -45,11 +45,11 @@ const seedDB = async () => {
             geometry: geoData.body.features[0].geometry,
             images: [
                 {
-                    url: 'https://res.cloudinary.com/dus522prm/image/upload/v1624631502/Roomy/jooj3qvxmzuudlzntqzj.jpg',
+                    url: 'https://res.cloudinary.com/dus522prm/image/upload/v1630073580/Roomy/norbert-levajsics-oTJ92KUXHls-unsplash_t5ls5p.jpg',
                     filename: 'Roomy/vbgowcn5ouobtsoj1nia'
                 },
                 {
-                    url: 'https://res.cloudinary.com/dus522prm/image/upload/v1624630391/Roomy/yv81hqvmhalm7jkjlxak.jpg',
+                    url: 'https://res.cloudinary.com/dus522prm/image/upload/v1630074259/Roomy/yeongkyeong-lee-AkNRiespFjA-unsplash_cnhg1s.jpg',
                     filename: 'Roomy/yv81hqvmhalm7jkjlxak'
                 }
             ]

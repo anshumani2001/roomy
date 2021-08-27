@@ -39,10 +39,7 @@ const RoomSchema = new Schema({
             type: Schema.Types.ObjectId,
             ref: 'Review'
         }
-    ],
-    maxOccupants: Number,
-    attachedBathroom: Boolean,
-    attachedBalcony: Boolean
+    ]
 }, opts);
 
 RoomSchema.virtual('properties.popUpMarkup').get(function () {

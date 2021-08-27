@@ -5,7 +5,8 @@ if (process.env.NODE_ENV !== 'production') {
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
-const ejsMate = require('ejs-mate'); const catchAsync = require('./utils/catchAsync');
+const ejsMate = require('ejs-mate'); 
+const catchAsync = require('./utils/catchAsync');
 const session = require('express-session');
 const flash = require('connect-flash');
 const ExpressError = require('./utils/ExpressError');
@@ -47,7 +48,7 @@ app.use(mongoSanitize());
 
 const sessionConfig = {
     name: 'session',
-    secret: 'secrethai',
+    secret: 'secret',
     resave: false,
     saveUninitialized: true,
     cookie: {
