@@ -27,7 +27,7 @@ const sample = array => array[Math.floor(Math.random() * array.length)];
 
 const seedDB = async () => {
     await Room.deleteMany({})
-    for (let i = 0; i < 200; i++) {
+    for (let i = 0; i < 50; i++) {
         const random1467 = Math.floor(Math.random() * 1467);
         const price = Math.floor(Math.random() * 10000 + 5000);
         const location = `${cities[random1467].city}, ${cities[random1467].state}`;
@@ -37,7 +37,7 @@ const seedDB = async () => {
         }).send();
 
         const room = new Room({
-            author: '6128f9f3e7c4680ab0ba1315',
+            author: '6129fe4fe829830016e004e5',
             location: location,
             PGname: `${sample(descriptors)} ${sample(places)}`,
             // image: 'https://source.unsplash.com/collection/3214295/1280x720',
