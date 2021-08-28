@@ -9,8 +9,9 @@ const Room = require('../models/room');
 const mbxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
 const mapBoxToken = process.env.MAPBOX_TOKEN;
 const geocoder = mbxGeocoding({ accessToken: mapBoxToken })
+const dbUrl = process.env.DB_URL
 
-mongoose.connect('mongodb://localhost:27017/roomy', {
+mongoose.connect(dbUrl, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true
