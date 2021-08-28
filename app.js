@@ -21,8 +21,10 @@ const mongoSanitize = require('express-mongo-sanitize');
 const userRoutes = require('./routes/users');
 const roomRoutes = require('./routes/rooms');
 const reviewRoutes = require('./routes/reviews');
-
-mongoose.connect('mongodb://localhost:27017/roomy', {
+const MongoStore = require('connect-mongo');
+// const dbUrl = process.env.DB_URL;
+const dbUrl = process.env.DB_URL||'mongodb://localhost:27017/roomy';
+mongoose.connect(dbUrl, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,
@@ -46,9 +48,24 @@ app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(mongoSanitize());
 
+const secret = process.env.SECRET || 'secret';
+
+const store = MongoStore.create({
+    mongoUrl: dbUrl,
+    touchAfter: 24 * 60 * 60,
+    crypto: {
+        secret
+    }
+});
+
+store.on("error",function(e){
+    console.log(e);
+})
+
 const sessionConfig = {
+    store,
     name: 'session',
-    secret: 'secret',
+    secret,
     resave: false,
     saveUninitialized: true,
     cookie: {
