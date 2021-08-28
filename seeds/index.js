@@ -39,7 +39,7 @@ const seedDB = async () => {
         const room = new Room({
             author: '6129fe4fe829830016e004e5',
             location: location,
-            PGname: `${sample(descriptors)} ${sample(places)}`,
+            PGname: `${sample(descriptors)} ${sample(places)} PG`,
             // image: 'https://source.unsplash.com/collection/3214295/1280x720',
             description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam consequatur dolorem ut autem repellendus quos sed soluta impedit possimus, commodi non quas. Placeat consequatur qui dolore debitis. Porro, illum eveniet!',
             price,
